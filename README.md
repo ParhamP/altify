@@ -11,6 +11,7 @@ Deep-Alt automizes the task of inserting description for alt attributes of img t
 - BeautifulSoup
 - Uploads.im API
 - Python 2.7
+- html5lib
 
 
 ## Install and Usage
@@ -24,13 +25,13 @@ Deep-Alt automizes the task of inserting description for alt attributes of img t
 1. Go to the directory you wish to download the program
 2. Open the terminal and enter `git clone https://github.com/ParhamP/deep-alt.git`
 3. Now use the following command to receive the new HTML in your Desktop:
-`python "path_to_deep-alt/src/main.py" "path_to_your_html" "api_key"`
+`python path_to_deep-alt/src/main.py path_to_your_html api_key`
 4. A new HTML with alt attributes filled out is in your desktop. Enjoy!
 
 ### Or Install via NPM
 
 1. `npm install -g deep-alt`
-2. open terminal and enter: `python /usr/local/lib/node_modules/deep-alt/src/main.py "path_to_your_html" "api_key"`
+2. open terminal and enter: `python /usr/local/lib/node_modules/deep-alt/src/main.py path_to_your_html api_key`
 3. A new HTML with alt attributes filled out is in your desktop. Enjoy!
 
 

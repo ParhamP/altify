@@ -17,6 +17,8 @@ from caption import caption
 from upload import upload
 import urlparse
 import os
+from PIL import Image
+import html5lib
 
 
 
@@ -53,7 +55,7 @@ def apply(html_file, api_key):
 		html_data = f.read()
 
 	#Using a third party library called beautifulSoup for parse and manipulate HTML DOM
-	parsed_html = BeautifulSoup(html_data, 'html.parser')
+	parsed_html = BeautifulSoup(html_data, 'html5lib')
 
 	#assign all the image tags to img_tages
 	img_tags = parsed_html.find_all('img')
