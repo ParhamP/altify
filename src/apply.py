@@ -16,6 +16,7 @@ from bs4 import BeautifulSoup
 from caption import caption
 from upload import upload
 import urlparse
+import os
 
 
 
@@ -68,5 +69,5 @@ def apply(html_file, api_key):
 				each_image["alt"] = caption(uploaded_url, api_key)
 			else:
 				each_image["alt"] = caption(each_image["src"], api_key)
-	output_file = open("newAlt.html", 'a')
+	output_file = open(os.path.expanduser("~/Desktop/mydddfile.html"), 'a') # set the output file to desktop
 	output_file.write(parsed_html.prettify())
