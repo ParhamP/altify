@@ -14,6 +14,7 @@
 
 import json
 import requests
+import urlparse
 
 def is_url(url):
 	"""
