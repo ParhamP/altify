@@ -26,7 +26,7 @@ def is_url(url):
 
 	returns
 	-------
-	True or False:		Bool
+	   -		Bool
 	"""
 	return urlparse.urlparse(url).scheme != ""
 
@@ -42,8 +42,8 @@ def upload(image_address):
 
     returns
     -------
-    main_url:			str
-                        the url of new uploaded image
+    (main_url, main_width):			tuple
+                        			(the url of new uploaded image, the width of the image)
 	"""
 
 	# A post request to uploads.im API to get the url of the uploaded image

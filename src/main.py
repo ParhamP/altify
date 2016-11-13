@@ -14,8 +14,10 @@
 
 import argparse
 from apply import apply
-parser = argparse.ArgumentParser()
-parser.add_argument("html", help = "The path to you html file")
-parser.add_argument("key", help = "Your Microsoft Cognitive Services Key")
-args = parser.parse_args()
-apply(args.html, args.key)
+
+if __name__ == '__main__':
+	parser = argparse.ArgumentParser()
+	parser.add_argument("html", help = "The path to you html file", type = str)
+	parser.add_argument("key", help = "Your Microsoft Cognitive Services Key", type = str)
+	args = parser.parse_args()
+	apply(args.html, args.key)
