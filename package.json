@@ -1,0 +1,19 @@
+{
+  "name": "deep-alt",
+  "version": "1.0.0",
+  "description": "Uses deep learning to caption img tags within a web page and fills out their alt attribute with the related caption",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParhamP/deep-alt.git"
+  },
+  "author": "Parham Pourdavood",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ParhamP/deep-alt/issues"
+  },
+  "homepage": "https://github.com/ParhamP/deep-alt#readme"
+}
