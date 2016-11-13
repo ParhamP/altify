@@ -15,6 +15,21 @@
 import json
 import requests
 
+def is_url(url):
+	"""
+	check to see if the address is a URL or a local path
+
+	parameters
+	----------
+	url:		str
+
+	returns
+	-------
+	True or False:		Bool
+	"""
+	return urlparse.urlparse(url).scheme != ""
+
+
 def upload(image_address):
 	"""
 	It uses uploads.im api to stream the images that are local.
@@ -31,10 +46,22 @@ def upload(image_address):
 	"""
 
 	# A post request to uploads.im API to get the url of the uploaded image
-	url = "http://uploads.im/api"
-	files = {'media': open(image_address, 'rb')}
-	request = requests.post(url, files=files)
-	data = json.loads(request.text)
-	image_url = data[u'data'][u'img_url']
-	main_url = image_url.encode('ascii','ignore')
-	return(main_url)
+	if is_url(image_address) == False:
+		url = "http://uploads.im/api"
+		files = {'media': open(image_address, 'rb')}
+		request = requests.post(url, files=files)
+		data = json.loads(request.text)
+		image_url = data[u'data'][u'img_url']
+		main_url = image_url.encode('ascii','ignore')
+		return(main_url)
+	else:
+		request = requests.get("http://uploads.im/api?upload=" + image_address)
+		data = json.loads(request.text)
+		image_url = data[u'data'][u'img_url']
+		main_url = image_url.encode('ascii','ignore')
+		return(main_url)
+
+
+
+
+
