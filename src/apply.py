@@ -15,28 +15,9 @@
 from bs4 import BeautifulSoup
 from caption import caption
 from upload import upload
-import urlparse
 import os
 from PIL import Image
 import html5lib
-
-
-
-def is_url(url):
-	"""
-	check to see if the address is a URL or a local path
-
-	parameters
-	----------
-	url:		str
-
-	returns
-	-------
-	True or False:		Bool
-	"""
-	return urlparse.urlparse(url).scheme != ""
-
-
 
 def apply(html_file, api_key):
 
@@ -65,11 +46,14 @@ def apply(html_file, api_key):
 	for each_image in img_tags:
 		value = each_image.get("alt")
 		if value == None or value == "":
-			# if the path is not a URL, it uploads the img, captions it, and then fills out the alt attribute
-			if is_url(each_image["src"]) == False:
-				uploaded_url = upload(each_image["src"])
-				each_image["alt"] = caption(uploaded_url, api_key)
-			else:
-				each_image["alt"] = caption(each_image["src"], api_key)
-	output_file = open(os.path.expanduser("~/Desktop/deep-alt.html"), 'a') # set the output file to desktop
+			# uploaded data is tuple: (Captioned text, the width of the image)
+			uploaded_data = upload(each_image["src"])
+			if uploaded_data != None:
+				# here we filter the images that are smaller than 200px width.
+				if uploaded_data[1] > 200:
+					uploaded_url = uploaded_data[0]
+					each_image["alt"] = caption(uploaded_url, api_key)
+
+	# set the output file to desktop
+	output_file = open(os.path.expanduser("~/Desktop/deep-alt.html"), 'a')
 	output_file.write(parsed_html.prettify())

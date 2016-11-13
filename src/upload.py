@@ -53,14 +53,21 @@ def upload(image_address):
 		request = requests.post(url, files=files)
 		data = json.loads(request.text)
 		image_url = data[u'data'][u'img_url']
+		image_width = data[u'data'][u'img_width']
 		main_url = image_url.encode('ascii','ignore')
-		return(main_url)
+		main_width = int(image_width.encode('ascii','ignore'))
+		print("Processing...")
+		return(main_url, main_width)
 	else:
 		request = requests.get("http://uploads.im/api?upload=" + image_address)
 		data = json.loads(request.text)
-		image_url = data[u'data'][u'img_url']
-		main_url = image_url.encode('ascii','ignore')
-		return(main_url)
+		if request.status_code == 200 and data[u'status_code'] == 200:
+			image_url = data[u'data'][u'img_url']
+			image_width = data[u'data'][u'img_width']
+			main_url = image_url.encode('ascii','ignore')
+			main_width = int(image_width.encode('ascii','ignore'))
+			print("Processing...")
+			return(main_url, main_width)
 
 
 
