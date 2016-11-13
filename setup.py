@@ -2,7 +2,8 @@ from distutils.core import setup
 
 setup(
   name = 'altify',
-  version = '0.1',
+  version = '0.2',
+  scripts=['altify'],
   description = "Uses deep learning to caption img tags within a web page and fills out their alt attribute with the related caption",
   author = 'Parham Pourdavood',
   author_email = 'ppourdavood@gmail.com',

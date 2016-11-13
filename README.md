@@ -1,8 +1,8 @@
-# Deep-Alt
+# Altify
 
 ![Image for demo](images/gif.gif)
 
-Deep-Alt automizes the task of inserting description for alt attributes of img tags for web deveopers. Deep-alt uses Microsoft Computer Vision API's deep learning algorithms to caption images in an HTML file and returns a new HTML file in which alt attributes are filled out with their corresponding captions.
+Altify automizes the task of inserting description for alt attributes of img tags for web deveopers. Altify uses Microsoft Computer Vision API's deep learning algorithms to caption images in an HTML file and returns a new HTML file in which alt attributes are filled out with their corresponding captions.
 
 
 ## Dependencies
@@ -23,16 +23,10 @@ Deep-Alt automizes the task of inserting description for alt attributes of img t
 ### Download on Github
 
 1. Go to the directory you wish to download the program
-2. Open the terminal and enter `git clone https://github.com/ParhamP/deep-alt.git`
+2. Open the terminal and enter `git clone https://github.com/ParhamP/altify.git`
 3. Now use the following command to receive the new HTML in your Desktop:
-`python path_to_deep-alt/src/main.py path_to_your_html api_key`
+`python path_to_altify/src/main.py path_to_your_html api_key`
 4. A new HTML with alt attributes filled out is in your desktop. Enjoy!
-
-### Or Install via NPM
-
-1. `npm install -g deep-alt`
-2. open terminal and enter: `python /usr/local/lib/node_modules/deep-alt/src/main.py path_to_your_html api_key`
-3. A new HTML with alt attributes filled out is in your desktop. Enjoy!
 
 
 ## How It was Built
