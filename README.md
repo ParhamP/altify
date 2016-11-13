@@ -46,7 +46,7 @@ Deep-Alt automizes the task of inserting description for alt attributes of img t
 
 
 
-## Samples of Some Captioned Images
+## Captioned Images Samples
 
 
 ![Image for demo](images/piano.jpg)

@@ -54,4 +54,4 @@ def caption(image_src, api_key):
 		return(captioned_data)
 		conn.close()
 	except Exception as e:
-		print("[Errno {0}] {1}")
+		print("")
