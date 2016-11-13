@@ -14,6 +14,26 @@
 
 from bs4 import BeautifulSoup
 from caption import caption
+from upload import upload
+import urlparse
+
+
+
+def is_url(url):
+	"""
+	check to see if the address is a URL or a local path
+
+	parameters
+	----------
+	url:		str
+
+	returns
+	-------
+	True or False:		Bool
+	"""
+    return urlparse.urlparse(url).scheme != ""
+
+
 
 def apply(html_file, api_key):
 
