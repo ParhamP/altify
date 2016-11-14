@@ -28,7 +28,7 @@ Open up terminal and enter: `pip install altify`
 
 ### 4) Enjoy!
 
-A new HTML file called altify.html is created next to the HTML file you selected. 
+A new HTML file called altify.html is created next to the HTML file you selected. (Or Desktop, when using older versions)
 
 
 ## How It was Built
