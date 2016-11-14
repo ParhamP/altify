@@ -12,7 +12,7 @@ Altify automizes the task of inserting alternative text attributes for imgage ta
 - html5lib
 
 
-## Install and Usage
+## Install and Usage (Latest Version)
 
 ### 1) Get a Microsoft API Key for Free
 [https://www.microsoft.com/cognitive-services/en-us/sign-up](https://www.microsoft.com/cognitive-services/en-us/sign-up "API Key").
