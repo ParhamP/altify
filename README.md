@@ -7,9 +7,7 @@ Altify automizes the task of inserting description for alt attributes of img tag
 
 ## Dependencies
 
-- Microsoft Computer Vision API - v1.0
 - BeautifulSoup
-- Uploads.im API
 - Python 2.7
 - html5lib
 

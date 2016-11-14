@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: altify
+Version: 0.5
+Summary: Uses deep learning to caption img tags within a web page and fills out their alt attribute with the related caption
+Home-page: https://github.com/parhamp/altify
+Author: Parham Pourdavood
+Author-email: ppourdavood@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/parhamp/altify/tarball/0.1
+Description: UNKNOWN
+Keywords: alt,caption,images
+Platform: UNKNOWN
