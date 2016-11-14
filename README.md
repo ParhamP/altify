@@ -24,7 +24,7 @@ Open up terminal and enter: `pip install altify`
 
 ### 3) Use
 
-`altify.py path_to_your_html api_key`
+`altify path_to_your_html api_key`
 
 ### 4) Enjoy!
 
