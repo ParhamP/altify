@@ -164,8 +164,14 @@ def apply(html_file, api_key):
 					uploaded_url = uploaded_data[0]
 					each_image["alt"] = caption(uploaded_url, api_key)
 
-	# set the output file next to the HTML file
-	output_file = open(os.path.dirname(html_file) + "/altify.html", 'a')
+
+	res = 0
+	# Use this loop to see if a file with the same name exits. If ti does, add a suffix.
+	while os.path.exists(os.path.dirname(html_file) + "/altify" + str(res) +".html"):
+		res+=1
+
+    # set the output file next to the HTML file
+	output_file = open(os.path.dirname(html_file) + "/altify" + str(res) +".html", 'a')
 	output_file.write(parsed_html.prettify())
 
 
