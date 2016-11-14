@@ -41,13 +41,6 @@ A new HTML file is created in your Desktop.
 5. Write the edited HTML to the Desktop.
 
 
-## Disclaimer
-
-Humans are currently better at captioning images than machines. Use responsibly!
-
-
-
-
 ## Captioned Images Samples
 
 
@@ -70,3 +63,8 @@ A woman wearing a red hat
 ![Image for demo](images/lake.jpg)
 
 A small boat in a lake surrounded by mountains
+
+
+## Disclaimer
+
+Humans are currently better at captioning images than machines. Use responsibly!
