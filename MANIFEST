@@ -3,7 +3,3 @@ setup.cfg
 setup.py
 altify/__init__.py
 altify/altify.py
-altify/apply.py
-altify/caption.py
-altify/main.py
-altify/upload.py
