@@ -4,6 +4,7 @@
 
 Altify automizes the task of inserting alternative text attributes for image tags. Altify uses Microsoft Computer Vision API's deep learning algorithms to caption images in an HTML file and returns a new HTML file in which alt attributes are filled out with their corresponding captions.
 
+Notice: Altify only captions images whose alt attributes are either empty or non-existent.
 
 ## Dependencies
 
