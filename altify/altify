@@ -155,7 +155,8 @@ def apply(html_file, api_key):
 	#it will fill out the alt with the corresponding caption for the image.
 	for each_image in img_tags:
 		value = each_image.get("alt")
-		if value == None or value == "":
+		# it only fills out the image tags that don't have the alt attribute
+		if value == None:
 			# uploaded data is tuple: (Captioned text, the width of the image)
 			uploaded_data = upload(each_image["src"])
 			if uploaded_data != None:
