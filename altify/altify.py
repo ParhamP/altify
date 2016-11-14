@@ -1,20 +1,30 @@
 #!/usr/bin/env python
 
-# Copyright 2016 Parham Pourdavood
+'''
+Copyright 2016 Parham Pourdavood
 
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-#     http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+'''
 
 import httplib, urllib, base64, ast, json
+import json
+import requests
+import urlparse
+from bs4 import BeautifulSoup
+import os
+from PIL import Image
+import html5lib
+import argparse
 
 def caption(image_src, api_key):
 	"""
@@ -59,9 +69,6 @@ def caption(image_src, api_key):
 		print("")
 
 
-import json
-import requests
-import urlparse
 
 def is_url(url):
 	"""
@@ -121,10 +128,6 @@ def upload(image_address):
 
 
 
-from bs4 import BeautifulSoup
-import os
-from PIL import Image
-import html5lib
 
 def apply(html_file, api_key):
 
@@ -161,18 +164,19 @@ def apply(html_file, api_key):
 					uploaded_url = uploaded_data[0]
 					each_image["alt"] = caption(uploaded_url, api_key)
 
-	# set the output file to desktop
-	output_file = open(os.path.expanduser("~/Desktop/altify.html"), 'a')
+	# set the output file next to the HTML file
+	output_file = open(os.path.dirname(html_file) + "/altify.html", 'a')
 	output_file.write(parsed_html.prettify())
 
 
-import argparse
-
-
-
-if __name__ == '__main__':
+def argParser():
 	parser = argparse.ArgumentParser()
 	parser.add_argument("html", help = "The path to you html file", type = str)
 	parser.add_argument("key", help = "Your Microsoft Cognitive Services Key", type = str)
 	args = parser.parse_args()
 	apply(args.html, args.key)
+
+
+if __name__ == '__main__':
+	argParser()
+
