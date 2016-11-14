@@ -173,7 +173,7 @@ def apply(html_file, api_key):
     # set the output file next to the HTML file
 	output_file = open(os.path.dirname(html_file) + "/altify" + str(res) +".html", 'a')
 	output_file.write(parsed_html.prettify())
-	print("Success! Your new HTML was created at: " + os.path.dirname(html_file))
+	print("Success! Your new HTML was created at: " + os.path.dirname(html_file) + "/altify" + str(res) +".html")
 
 
 def argParser():
