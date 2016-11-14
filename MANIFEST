@@ -2,4 +2,4 @@
 setup.cfg
 setup.py
 altify/__init__.py
-altify/altify.py
+altify/altify
