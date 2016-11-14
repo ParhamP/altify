@@ -174,7 +174,10 @@ def argParser():
 	parser.add_argument("html", help = "The path to you html file", type = str)
 	parser.add_argument("key", help = "Your Microsoft Cognitive Services Key", type = str)
 	args = parser.parse_args()
-	apply(args.html, args.key)
+	try:
+		apply(args.html, args.key)
+	except ValueError:
+		print("Please Try Again!")
 
 
 if __name__ == '__main__':
