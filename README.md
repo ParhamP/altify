@@ -28,7 +28,7 @@ Open up terminal and enter: `pip install altify`
 
 ### 4) Enjoy!
 
-A new HTML file is created in your Desktop.
+A new HTML file called altify.html is created next to the HTML file you selected. 
 
 
 ## How It was Built
@@ -38,7 +38,7 @@ A new HTML file is created in your Desktop.
 3. Stream images using uploads.im API, and then with its URL, send request to Microsoft's API to caption.
 4. Filter images that are smaller than 200px width.
 4. Fill out the alt attributes for all the images.
-5. Write the edited HTML to the Desktop.
+5. Write an edited HTML file next to the file you selected.
 
 
 ## Captioned Images Samples
