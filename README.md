@@ -64,6 +64,10 @@ A woman wearing a red hat
 
 A small boat in a lake surrounded by mountains
 
+![Image for demo](images/pic.png)
+
+Donald Trump wearing a suit and tie
+
 
 ## Disclaimer
 
