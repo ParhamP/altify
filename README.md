@@ -44,6 +44,10 @@ A new HTML file is created in your Desktop.
 ## Captioned Images Samples
 
 
+![Image for demo](images/pic.png)
+
+Donald Trump wearing a suit and tie
+
 ![Image for demo](images/piano.jpg)
 
 A piano keyboard
@@ -64,9 +68,7 @@ A woman wearing a red hat
 
 A small boat in a lake surrounded by mountains
 
-![Image for demo](images/pic.png)
 
-Donald Trump wearing a suit and tie
 
 
 ## Disclaimer
