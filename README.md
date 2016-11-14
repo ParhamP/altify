@@ -14,19 +14,19 @@ Altify automizes the task of inserting description for alt attributes of img tag
 
 ## Install and Usage
 
-### 1)Get a Microsoft API Key for Free
+### 1) Get a Microsoft API Key for Free
 [https://www.microsoft.com/cognitive-services/en-us/sign-up](https://www.microsoft.com/cognitive-services/en-us/sign-up "API Key").
 
 
-### 2)Install via pip
+### 2) Install via pip
 
 Open up terminal and enter: `pip install altify`
 
-## 3)Use
+### 3) Use
 
 `altify.py path_to_your_html api_key`
 
-## 4) Enjoy!
+### 4) Enjoy!
 
 A new HTML file is created in your Desktop.
 
@@ -34,11 +34,16 @@ A new HTML file is created in your Desktop.
 ## How It was Built
 
 1. Parses the html using BeautifulSoup.
-2. Find all the image tags
-3. If the image's source is an internet URL, send a request to Microsoft's API to caption
-4. If the image is local, stream it using uploads.im API, and then with its URL, send request to Microsoft's API to caption
-5. Fill out the alt attributes for all the images
-6. Write the edited HTML to the Desktop
+2. Find all the image tags.
+3. Stream images using uploads.im API, and then with its URL, send request to Microsoft's API to caption.
+4. Filter images that are smaller than 200px width.
+4. Fill out the alt attributes for all the images.
+5. Write the edited HTML to the Desktop.
+
+
+## Disclaimer
+
+Humans are currently better at captioning images than machines. Use responsibly!
 
 
 
