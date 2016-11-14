@@ -14,17 +14,21 @@ Altify automizes the task of inserting description for alt attributes of img tag
 
 ## Install and Usage
 
-### Get a Microsoft API Key for Free
+### 1)Get a Microsoft API Key for Free
 [https://www.microsoft.com/cognitive-services/en-us/sign-up](https://www.microsoft.com/cognitive-services/en-us/sign-up "API Key").
 
 
-### Download on Github
+### 2)Install via pip
 
-1. Go to the directory you wish to download the program
-2. Open the terminal and enter `git clone https://github.com/ParhamP/altify.git`
-3. Now use the following command to receive the new HTML in your Desktop:
-`python path_to_altify/src/main.py path_to_your_html api_key`
-4. A new HTML with alt attributes filled out is in your desktop. Enjoy!
+Open up terminal and enter: `pip install altify`
+
+## 3)Use
+
+`altify.py path_to_your_html api_key`
+
+## 4) Enjoy!
+
+A new HTML file is created in your Desktop.
 
 
 ## How It was Built

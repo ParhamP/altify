@@ -55,5 +55,5 @@ def apply(html_file, api_key):
 					each_image["alt"] = caption(uploaded_url, api_key)
 
 	# set the output file to desktop
-	output_file = open(os.path.expanduser("~/Desktop/deep-alt.html"), 'a')
+	output_file = open(os.path.expanduser("~/Desktop/altify.html"), 'a')
 	output_file.write(parsed_html.prettify())
