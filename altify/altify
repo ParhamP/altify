@@ -16,15 +16,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 '''
 
-import httplib, urllib, base64, ast, json
-import json
-import requests
-import urlparse
+import httplib, urllib, base64, ast, json, requests, urlparse, os, html5lib, argparse
 from bs4 import BeautifulSoup
-import os
-from PIL import Image
-import html5lib
-import argparse
+
 
 def caption(image_src, api_key):
 	"""
@@ -173,7 +167,7 @@ def apply(html_file, api_key):
 
     # set the output file next to the HTML file
 	output_file = open(os.path.dirname(html_file) + "/altify" + str(res) +".html", 'a')
-	output_file.write(parsed_html.prettify())
+	output_file.write(parsed_html.prettify().encode('utf-8'))
 	print("Success! Your new HTML was created at: " + os.path.dirname(html_file) + "/altify" + str(res) +".html")
 
 
@@ -185,7 +179,7 @@ def argParser():
 	try:
 		apply(args.html, args.key)
 	except ValueError:
-		print("Please Try Again!")
+		print("Failed to connect to server: Please try again!")
 
 
 if __name__ == '__main__':
