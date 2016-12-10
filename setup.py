@@ -10,7 +10,7 @@ setup(
   author = 'Parham Pourdavood',
   author_email = 'ppourdavood@gmail.com',
   url = 'https://github.com/parhamp/altify',
-  download_url = 'https://github.com/parhamp/altify/tarball/0.1',
+  download_url = 'https://github.com/parhamp/altify/tarball/3.3',
   keywords = ['alt', 'caption', 'images', 'deep learning'], # arbitrary keywords
   classifiers = [],
   install_requires = ['beautifulsoup4', 'html5lib'],

@@ -31,18 +31,18 @@ from bs4 import BeautifulSoup
 
 def caption(image_src, api_key):
     """
-It takes an image URL and an API key to send a request to
-Microsoft Computer Vision API
-and returns a caption(string) for the image.
+    It takes an image URL and an API key to send a request to
+    Microsoft Computer Vision API
+    and returns a caption(string) for the image.
 
-Parameters
-----------
-image_src:		str
-api_key:		str
-                Microsoft's api_key
+    Parameters
+    ----------
+    image_src:		str
+    api_key:		str
+                    Microsoft's api_key
 
-Returns
--------
+    Returns
+    -------
     captioned_data:	str
     """
     headers = {
@@ -56,8 +56,8 @@ Returns
         'maxCandidates': '1',
     })
 
-# data is the data that takes the image source. It is converted to str
-# using a json method
+    # data is the data that takes the image source. It is converted to str
+    # using a json method
     data = json.dumps({"Url": image_src}, separators=(',', ':'))
 
     try:
@@ -91,6 +91,7 @@ def is_url(url):
 
 
 def upload(image_address):
+
     """
     It uses uploads.im api to stream the images that are local.
 
@@ -99,14 +100,15 @@ def upload(image_address):
     image_address:		str
                     the local address of the image(e.g, 'images/photo.jpg')
 
-returns
--------
-(main_url, main_width):			tuple
-                                (the url of new uploaded image, the
-                                width of the image)
+    returns
+    -------
+    (main_url, main_width):			tuple
+                                    (the url of new uploaded image, the
+                                     width of the image)
     """
 
     # A post request to uploads.im API to get the url of the uploaded image
+
     if is_url(image_address) is False:
         url = "http://uploads.im/api"
         files = {'media': open(image_address, 'rb')}
@@ -118,6 +120,7 @@ returns
         main_width = int(image_width.encode('ascii', 'ignore'))
         print("Processing...")
         return(main_url, main_width)
+
     else:
         request = requests.get("http://uploads.im/api?upload=" + image_address)
         data = json.loads(request.text)
@@ -131,7 +134,8 @@ returns
 
 
 def apply(html_file, api_key):
-    '''
+
+    """
     it takes an html file and creates a new html file in
     which all the alt attribute of img tags
     are filled out with their related caption. (made by caption
@@ -142,41 +146,49 @@ def apply(html_file, api_key):
     html_file:		HTML
     api_key:		str
                     Microsoft's api_key
-    '''
+    """
 
     with open(html_file) as f:
         html_data = f.read()
 
     # Using a third party library called beautifulSoup for parse and
     # manipulate HTML DOM
+
     parsed_html = BeautifulSoup(html_data, 'html5lib')
 
-    # assign all the image tags to img_tages
+    # Assign all the image tags to img_tages
+
     img_tags = parsed_html.find_all('img')
 
-    # goes over each img tag and see if its alt attribute has a value.
-    # If it doesn't,
-    # it will fill out the alt with the corresponding caption for the image.
+    # Goes over each img tag and see if its alt attribute has a value.
+    # If it doesn't, it will fill out the alt with the corresponding caption
+    # for the image.
+
     for each_image in img_tags:
         value = each_image.get("alt")
-        # it only fills out the image tags that don't have the alt attribute
+
+        # It only fills out the image tags that don't have the alt attribute
         if value is None:
-            # uploaded data is tuple: (Captioned text, the width of the image)
+
+            # Uploaded data is tuple: (Captioned text, the width of the image)
             uploaded_data = upload(each_image["src"])
+
             if uploaded_data is not None:
-                # here we filter the images that are smaller than 200px width.
+
+                # Here we filter the images that are smaller than 200px width.
                 if uploaded_data[1] > 200:
                     uploaded_url = uploaded_data[0]
                     each_image["alt"] = caption(uploaded_url, api_key)
 
     res = 0
-    # Use this loop to see if a file with the same name exits. If ti does, add
+
+    # Use this loop to see if a file with the same name exits. If it does, add
     # a suffix.
     while os.path.exists(os.path.dirname(html_file) +
                          "/altify" + str(res) + ".html"):
         res += 1
 
-# set the output file next to the HTML file
+    # set the output file next to the HTML file
     output_file = open(os.path.dirname(html_file) +
                        "/altify" + str(res) + ".html", 'a')
     output_file.write(parsed_html.prettify().encode('utf-8'))
@@ -186,9 +198,10 @@ def apply(html_file, api_key):
 
 def argParser():
     parser = argparse.ArgumentParser()
-    parser.add_argument("html", help="The path to you html file", type=str)
-    parser.add_argument(
-        "key", help="Your Microsoft Cognitive Services Key", type=str)
+    parser.add_argument("html", help="The path to youe html file",
+                        type=str, required=True)
+    parser.add_argument("key", help="Microsoft Cognitive Services Key",
+                        type=str, required=True)
     args = parser.parse_args()
     try:
         apply(args.html, args.key)
