@@ -66,7 +66,7 @@ Donald Trump wearing a suit and tie
 
 A piano keyboard
 
-.. image:: https://github.com/ParhamP/altify/blob/master/images/gif.gif?raw=true
+.. image:: https://github.com/ParhamP/altify/blob/master/images/animal.jpg?raw=true
 
 A squirrel eating
 
