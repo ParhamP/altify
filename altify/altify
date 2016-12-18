@@ -56,7 +56,7 @@ def caption(image_src, api_key):
         'maxCandidates': '1',
     })
 
-    # data is the data that takes the image source. It is converted to str
+    # Data is the data that takes the image source. It is converted to str
     # using a json method
     data = json.dumps({"Url": image_src}, separators=(',', ':'))
 
@@ -66,7 +66,7 @@ def caption(image_src, api_key):
                      params, data, headers)
         response = conn.getresponse()
         data = ast.literal_eval(response.read())
-        # captioned_data is a JSON that we need to navigate in order to get to
+        # Captioned_data is a JSON that we need to navigate in order to get to
         # the caption text.
         captioned_data = data['description']['captions'][0]["text"]
         return(captioned_data)
@@ -98,7 +98,7 @@ def upload(image_address):
     parameters
     ----------
     image_address:		str
-                    the local address of the image(e.g, 'images/photo.jpg')
+                        Local address of the image(e.g, 'images/photo.jpg')
 
     returns
     -------
@@ -136,7 +136,7 @@ def upload(image_address):
 def apply(html_file, api_key):
 
     """
-    it takes an html file and creates a new html file in
+    It takes an html file and creates a new html file in
     which all the alt attribute of img tags
     are filled out with their related caption. (made by caption
     function in caption module)
@@ -188,7 +188,7 @@ def apply(html_file, api_key):
                          "/altify" + str(res) + ".html"):
         res += 1
 
-    # set the output file next to the HTML file
+    # Set the output file next to the HTML file
     output_file = open(os.path.dirname(html_file) +
                        "/altify" + str(res) + ".html", 'a')
     output_file.write(parsed_html.prettify().encode('utf-8'))
