@@ -41,14 +41,14 @@ Open up terminal and enter: ``pip install altify``
 ~~~~~~~~~
 
 A new HTML file called altify.html is created next to the HTML file you
-selected. (Or Desktop, when using older versions)
+selected.
 
 How It was Built
 ----------------
 
 1. Parses the html using BeautifulSoup.
 2. Finds all the image tags.
-3. sends a request to Microsoft's API to caption.
+3. Sends a request to Microsoft's API to caption.
 4. Fills out the alt attributes for all the images.
 5. Writes an edited HTML file next to the file you selected.
 
