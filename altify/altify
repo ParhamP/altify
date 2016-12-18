@@ -28,8 +28,8 @@ from bs4 import BeautifulSoup
 
 def is_url(url):
     """
-    check to see if the address is a URL or a local path and returns True if 
-    it is and Fale if it is a local file. 
+    check to see if the address is a URL or a local path and returns True if
+    it is and Fale if it is a local file.
 
     parameters
     ----------
@@ -42,7 +42,7 @@ def is_url(url):
     return urlparse.urlparse(url).scheme != ""
 
 
-def caption(image_file, api_key):
+def caption(image_file, api_key, html_file):
     """
     It takes an image URL and an API key to send a request to
     Microsoft Computer Vision API
@@ -53,6 +53,7 @@ def caption(image_file, api_key):
     image_src:      str
     api_key:        str
                     Microsoft's api_key
+    html_file       Abs path to html_file
 
     Returns
     -------
@@ -80,8 +81,14 @@ def caption(image_file, api_key):
     if is_url(image_file):
         data = json.dumps({"Url": image_file}, separators=(',', ':'))
     else:
-        data = open(image_file, 'rb')
-
+        if os.path.isabs(image_file):
+            data = open(image_file, 'rb')
+        else:
+            # If the image's path is relative we will find its absolute path
+            # by joining it to the html_file's abs path. 
+            dir_path = os.path.dirname(os.path.realpath(html_file))
+            image_file = os.path.join(dir_path, image_file)
+            data = open(image_file, 'rb')
     try:
         conn = httplib.HTTPSConnection('api.projectoxford.ai')
         conn.request("POST", "/vision/v1.0/describe?%s" %
@@ -133,7 +140,7 @@ def apply(html_file, api_key):
 
         # It only fills out the image tags that don't have the alt attribute
         if value is None:
-            each_image["alt"] = caption(each_image["src"], api_key)
+            each_image["alt"] = caption(each_image["src"], api_key, html_file)
 
     res = 0
 
