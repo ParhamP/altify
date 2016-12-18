@@ -16,9 +16,8 @@ practices)
 Dependencies
 ------------
 
--  BeautifulSoup
 -  Python 2.7
--  html5lib
+-  BeautifulSoup
 
 Install and Usage (Latest Version)
 ----------------------------------
@@ -48,12 +47,10 @@ How It was Built
 ----------------
 
 1. Parses the html using BeautifulSoup.
-2. Find all the image tags.
-3. Stream images using uploads.im API, and then with its URL, send
-   request to Microsoft's API to caption.
-4. Filter images that are smaller than 200px width.
-5. Fill out the alt attributes for all the images.
-6. Write an edited HTML file next to the file you selected.
+2. Finds all the image tags.
+3. sends a request to Microsoft's API to caption.
+4. Fills out the alt attributes for all the images.
+5. Writes an edited HTML file next to the file you selected.
 
 Captioned Images Samples
 ------------------------
