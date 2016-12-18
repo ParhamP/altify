@@ -1,0 +1,9 @@
+README.rst
+setup.py
+altify/__init__.py
+altify/altify
+altify.egg-info/PKG-INFO
+altify.egg-info/SOURCES.txt
+altify.egg-info/dependency_links.txt
+altify.egg-info/requires.txt
+altify.egg-info/top_level.txt
