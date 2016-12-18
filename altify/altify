@@ -18,18 +18,31 @@ limitations under the License.
 
 import httplib
 import urllib
-import base64
 import ast
 import json
-import requests
 import urlparse
 import os
-import html5lib
 import argparse
 from bs4 import BeautifulSoup
 
 
-def caption(image_src, api_key):
+def is_url(url):
+    """
+    check to see if the address is a URL or a local path and returns True if 
+    it is and Fale if it is a local file. 
+
+    parameters
+    ----------
+    url:        str
+
+    returns
+    -------
+       -        Bool
+    """
+    return urlparse.urlparse(url).scheme != ""
+
+
+def caption(image_file, api_key):
     """
     It takes an image URL and an API key to send a request to
     Microsoft Computer Vision API
@@ -37,20 +50,26 @@ def caption(image_src, api_key):
 
     Parameters
     ----------
-    image_src:		str
-    api_key:		str
+    image_src:      str
+    api_key:        str
                     Microsoft's api_key
 
     Returns
     -------
-    captioned_data:	str
+    captioned_data: str
     """
-    headers = {
-        # Request headers
-        'Content-Type': 'application/json',
-        'Ocp-Apim-Subscription-Key': api_key,
-    }
-
+    if is_url(image_file) is False:
+        headers = {
+            # Request headers
+            'Content-Type': 'application/octet-stream',
+            'Ocp-Apim-Subscription-Key': api_key,
+        }
+    else:
+        headers = {
+            # Request headers
+            'Content-Type': 'application/json',
+            'Ocp-Apim-Subscription-Key': api_key,
+        }
     params = urllib.urlencode({
         # Request parameters
         'maxCandidates': '1',
@@ -58,7 +77,10 @@ def caption(image_src, api_key):
 
     # Data is the data that takes the image source. It is converted to str
     # using a json method
-    data = json.dumps({"Url": image_src}, separators=(',', ':'))
+    if is_url(image_file):
+        data = json.dumps({"Url": image_file}, separators=(',', ':'))
+    else:
+        data = open(image_file, 'rb')
 
     try:
         conn = httplib.HTTPSConnection('api.projectoxford.ai')
@@ -72,65 +94,7 @@ def caption(image_src, api_key):
         return(captioned_data)
         conn.close()
     except Exception:
-        print("")
-
-
-def is_url(url):
-    """
-    check to see if the address is a URL or a local path
-
-    parameters
-    ----------
-    url:		str
-
-    returns
-    -------
-       -		Bool
-    """
-    return urlparse.urlparse(url).scheme != ""
-
-
-def upload(image_address):
-
-    """
-    It uses uploads.im api to stream the images that are local.
-
-    parameters
-    ----------
-    image_address:		str
-                        Local address of the image(e.g, 'images/photo.jpg')
-
-    returns
-    -------
-    (main_url, main_width):			tuple
-                                    (the url of new uploaded image, the
-                                     width of the image)
-    """
-
-    # A post request to uploads.im API to get the url of the uploaded image
-
-    if is_url(image_address) is False:
-        url = "http://uploads.im/api"
-        files = {'media': open(image_address, 'rb')}
-        request = requests.post(url, files=files)
-        data = json.loads(request.text)
-        image_url = data[u'data'][u'img_url']
-        image_width = data[u'data'][u'img_width']
-        main_url = image_url.encode('ascii', 'ignore')
-        main_width = int(image_width.encode('ascii', 'ignore'))
-        print("Processing...")
-        return(main_url, main_width)
-
-    else:
-        request = requests.get("http://uploads.im/api?upload=" + image_address)
-        data = json.loads(request.text)
-        if request.status_code == 200 and data[u'status_code'] == 200:
-            image_url = data[u'data'][u'img_url']
-            image_width = data[u'data'][u'img_width']
-            main_url = image_url.encode('ascii', 'ignore')
-            main_width = int(image_width.encode('ascii', 'ignore'))
-            print("Processing...")
-            return(main_url, main_width)
+        print("API call to Microsoft was not successful")
 
 
 def apply(html_file, api_key):
@@ -169,16 +133,7 @@ def apply(html_file, api_key):
 
         # It only fills out the image tags that don't have the alt attribute
         if value is None:
-
-            # Uploaded data is tuple: (Captioned text, the width of the image)
-            uploaded_data = upload(each_image["src"])
-
-            if uploaded_data is not None:
-
-                # Here we filter the images that are smaller than 200px width.
-                if uploaded_data[1] > 200:
-                    uploaded_url = uploaded_data[0]
-                    each_image["alt"] = caption(uploaded_url, api_key)
+            each_image["alt"] = caption(each_image["src"], api_key)
 
     res = 0
 
