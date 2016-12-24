@@ -82,13 +82,15 @@ def caption(image_file, api_key, html_file):
         data = json.dumps({"Url": image_file}, separators=(',', ':'))
     else:
         if os.path.isabs(image_file):
-            data = open(image_file, 'rb')
+            with open(image_file, 'rb') as f:
+                data = f.read()
         else:
             # If the image's path is relative we will find its absolute path
-            # by joining it to the html_file's abs path. 
+            # by joining it to the html_file's abs path.
             dir_path = os.path.dirname(os.path.realpath(html_file))
             image_file = os.path.join(dir_path, image_file)
-            data = open(image_file, 'rb')
+            with open(image_file, 'rb') as f:
+                data = f.read()
     try:
         conn = httplib.HTTPSConnection('api.projectoxford.ai')
         conn.request("POST", "/vision/v1.0/describe?%s" %

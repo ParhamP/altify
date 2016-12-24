@@ -6,7 +6,7 @@ with open("README.rst", "rb") as f:
 setup(
   name = 'altify',
   packages=['altify'],
-  version = '4.1',
+  version = '4.2',
   scripts=['altify/altify'],
   description = "Uses deep learning to caption img tags within a web page and fills out their alt attribute with the related caption",
   long_description=long_description,
