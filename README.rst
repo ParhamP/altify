@@ -71,6 +71,10 @@ A woman wearing a red hat
 
 A small boat in a lake surrounded by mountains
 
+Author
+------
+Parham Pourdavood
+
 Disclaimer
 ----------
 
