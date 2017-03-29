@@ -19,8 +19,8 @@ Dependencies
 -  Python 2.7
 -  BeautifulSoup
 
-Install and Usage (Latest Version)
-----------------------------------
+Install and Use
+---------------
 
 1) Get a Microsoft API Key for Free
 +++++++++++++++++++++++++++++++++++
