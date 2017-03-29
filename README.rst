@@ -23,22 +23,22 @@ Install and Usage (Latest Version)
 ----------------------------------
 
 1) Get a Microsoft API Key for Free
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++++++++++++++
 
 https://www.microsoft.com/cognitive-services/en-us/sign-up.
 
 2) Install via pip
-~~~~~~~~~~~~~~~~~~
+++++++++++++++++++
 
 Open up terminal and enter: ``pip install altify``
 
 3) Use
-~~~~~~
+++++++
 
 ``altify path_to_your_html api_key``
 
 4) Enjoy!
-~~~~~~~~~
++++++++++
 
 A new HTML file called altify.html is created next to the HTML file you
 selected.
